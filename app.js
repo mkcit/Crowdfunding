@@ -33,8 +33,8 @@ app.get('/edit-project', (req, res, next) => {
 
 // -------------- Payments Page --------------- //
 // projects page
-app.get('/projects', (req, res, next) => {
-    console.log('It is projects page');
+app.get('/payment', (req, res, next) => {
+    console.log('It is payment page');
 });
 
 // -------------- Admin Pages --------------- //
