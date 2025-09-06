@@ -14,14 +14,67 @@ const app = express();
 // res is response object
 // next is a function that calls the next middleware function in the stack
 app.use((req, res, next) => {
-    console.log(req.url + ' ' + req.method);
+    console.log('It is starting middleware');
     next();
 });
-
-app.use((req, res, next) => {
-    res.redirect('https://www.google.ps');
+// -------------- User Pages --------------- //
+// dashboard page
+app.get('/dashboard', (req, res, next) => {
+    console.log('It is dashboard page');
+});
+// create project page
+app.get('/create-project', (req, res, next) => {
+    console.log('It is creating-project page');
+});
+// dashboard page
+app.get('/edit-project', (req, res, next) => {
+    console.log('It is editing project page');
 });
 
+// -------------- Payments Page --------------- //
+// projects page
+app.get('/projects', (req, res, next) => {
+    console.log('It is projects page');
+});
+
+// -------------- Admin Pages --------------- //
+// projects page
+app.get('/projects', (req, res, next) => {
+    console.log('It is projects page');
+});
+
+// -------------- Public Pages --------------- //
+// projects page
+app.get('/projects', (req, res, next) => {
+    console.log('It is projects page');
+});
+
+// project-details page
+app.get('/project-details', (req, res, next) => {
+    console.log('It is project-details page');
+});
+
+// register page
+app.get('/register', (req, res, next) => {
+    console.log('It is register page');
+});
+
+// login page
+app.get('/login', (req, res, next) => {
+    console.log('It is register page');
+});
+
+// home page
+app.get('/home', (req, res, next) => {
+    console.log('It is home page');
+});
+
+// Default home page
+app.use((req, res, next) => {
+    console.log('It is home page');
+});
+
+// listening in port 3000
 app.listen(3000, () => {
     console.log('Listening on port 3000');
 });
