@@ -2,10 +2,10 @@
 // http is object containing methods and properties and classes
 const http = require('http');
 
-// express is a function
+// express is a function object
 const express = require('express');
 
-// express is a function that returns an object
+// express is a function object that returns an object
 // app is an object containing methods and properties
 const app = express();
 
@@ -17,62 +17,18 @@ app.use((req, res, next) => {
     console.log('It is starting middleware');
     next();
 });
-// -------------- User Pages --------------- //
-// dashboard page
-app.get('/dashboard', (req, res, next) => {
-    console.log('It is dashboard page');
-});
-// create project page
-app.get('/create-project', (req, res, next) => {
-    console.log('It is creating-project page');
-});
-// dashboard page
-app.get('/edit-project', (req, res, next) => {
-    console.log('It is editing project page');
-});
 
-// -------------- Payments Page --------------- //
-// projects page
-app.get('/payment', (req, res, next) => {
-    console.log('It is payment page');
-});
+const paymentRoutes = require('./routes/payment');
+app.use('/payment', paymentRoutes);
 
-// -------------- Admin Pages --------------- //
-// projects page
-app.get('/projects', (req, res, next) => {
-    console.log('It is projects page');
-});
+const userRoutes = require('./routes/user');
+app.use('/user', userRoutes);
 
-// -------------- Public Pages --------------- //
-// projects page
-app.get('/projects', (req, res, next) => {
-    console.log('It is projects page');
-});
+const adminRoutes = require('./routes/admin');
+app.use('/admin', adminRoutes);
 
-// project-details page
-app.get('/project-details', (req, res, next) => {
-    console.log('It is project-details page');
-});
-
-// register page
-app.get('/register', (req, res, next) => {
-    console.log('It is register page');
-});
-
-// login page
-app.get('/login', (req, res, next) => {
-    console.log('It is register page');
-});
-
-// home page
-app.get('/home', (req, res, next) => {
-    console.log('It is home page');
-});
-
-// Default home page
-app.use((req, res, next) => {
-    console.log('It is home page');
-});
+const publicRoutes = require('./routes/public');
+app.use(publicRoutes);
 
 // listening in port 3000
 app.listen(3000, () => {
