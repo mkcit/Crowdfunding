@@ -16,10 +16,10 @@
             <label class="form__label" for="sort">ترتيب حسب</label>
             <div class="form__control">
               <select class="form__input" id="sort" name="sort">
-                <option value="recent">الأحدث</option>
-                <option value="oldest">الأقدم</option>
-                <option value="amount">الأكثر تمويلاً</option>
-                <option value="progress">نسبة الإنجاز</option>
+                <option value="recent"<%= (sortBy==='recent')?'selected':'' %>>الأحدث</option>
+                <option value="oldest"<%= (sortBy==='oldest')?'selected':'' %>>الأقدم</option>
+                <option value="amount"<%= (sortBy==='amount')?'selected':'' %>>الأكثر تمويلاً</option>
+                <option value="progress"<%= (sortBy==='progress')?'selected':'' %>>نسبة الإنجاز</option>
               </select>
             </div>
           </div>
@@ -29,7 +29,7 @@
       </section>
       <!-- قائمة المشاريع -->
       <main>
-        <div class="grid" role="list">
+        <div class="grid" role="list" style="margin-top: 10px;" aria-label="قائمة المشاريع">
           <% projectsList.forEach(project=> { %>
             <article role="listitem" class="project-card card">
               <h2><a href="/project-details">

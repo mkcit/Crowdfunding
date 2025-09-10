@@ -55,6 +55,8 @@ module.exports = class Project {
             }
         }
 
+        console.log(sql);
+
         return db.execute(sql, params);
     }
 }
