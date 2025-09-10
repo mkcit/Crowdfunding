@@ -32,9 +32,6 @@ module.exports = class Project {
         return db.execute('SELECT * FROM projects WHERE status = ?', ['featured']);
     }
     static findByTitle(title, sortBy) {
-
-        // Query to join project with category to get all data in addition to category name
-        // Join projects with categories to get category name
         let sql = 'SELECT projects.*, categories.name AS category_name FROM projects LEFT JOIN categories ON projects.category_id = categories.id';
         let params = [];
 
