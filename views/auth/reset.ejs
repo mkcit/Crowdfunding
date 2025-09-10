@@ -1,0 +1,39 @@
+<!-- reset.ejs -->
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <main class="auth container" aria-labelledby="reset-title">
+            <h1 id="reset-title">إعادة تعيين كلمة المرور</h1>
+            <p>أدخل كلمة المرور الجديدة وأكدها لحفظ التغيير.</p>
+
+            <form class="form" method="POST" action="/reset">
+                <input type="hidden" name="_csrf" value="CSRF_TOKEN_HERE">
+                <input type="hidden" name="token" value="RESET_TOKEN_HERE">
+
+                <div class="form__group">
+                    <label class="form__label" for="password">كلمة المرور الجديدة</label>
+                    <div class="form__control">
+                        <input class="form__input" id="password" name="password" type="password" required minlength="6"
+                            autocomplete="new-password" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="confirm">تأكيد كلمة المرور</label>
+                    <div class="form__control">
+                        <input class="form__input" id="confirm" name="confirm_password" type="password" required
+                            minlength="6" autocomplete="new-password" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <button class="btn btn--primary" type="submit">حفظ كلمة المرور</button>
+            </form>
+
+            <hr class="divider">
+
+            <div class="links">
+                <p><a href="/login">العودة إلى تسجيل الدخول</a></p>
+            </div>
+        </main>
+
+        <%- include('../includes/footer.ejs') %>

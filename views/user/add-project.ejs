@@ -1,0 +1,267 @@
+<!-- add-project.ejs -->
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <main class="container">
+            <form class="form" method="POST" action="/user/add-project" enctype="multipart/form-data">
+
+                <!-- معلومات أساسية -->
+                <h2>المعلومات الأساسية</h2>
+
+                <div class="form__group">
+                    <label class="form__label" for="title">عنوان المشروع:</label>
+                    <div class="form__control">
+                        <input class="form__input" id="title" name="title" type="text" required minlength="5"
+                            maxlength="120" />
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="category">التصنيف:</label>
+                    <div class="form__control">
+                        <select class="form__input" id="category" name="category" required>
+                            <option value="">— اختر —</option>
+                            <option value="education">تعليم</option>
+                            <option value="health">صحة</option>
+                            <option value="energy">طاقة</option>
+                            <option value="water">مياه</option>
+                            <option value="community">خدمة مجتمعية</option>
+                            <option value="tech">تقنية</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="city">المدينة/الموقع:</label>
+                    <div class="form__control">
+                        <input class="form__input" id="city" name="city" type="text" required />
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="tags">وسوم (افصل بينها بفواصل):</label>
+                    <div class="form__control">
+                        <input class="form__input" id="tags" name="tags" type="text"
+                            placeholder="تعليم, برمجة, أطفال" />
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- الملخص والوصف -->
+                <h2>وصف المشروع</h2>
+
+                <div class="form__group">
+                    <label class="form__label" for="summary">ملخص قصير:</label>
+                    <div class="form__control">
+                        <textarea class="form__input" id="summary" name="summary" rows="3" maxlength="300"
+                            required></textarea>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="description">الوصف التفصيلي:</label>
+                    <div class="form__control">
+                        <textarea class="form__input" id="description" name="description" rows="10" required></textarea>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- التمويل والمدة -->
+                <h2>التمويل والمدة</h2>
+
+                <div class="form__group">
+                    <label class="form__label" for="goal">الهدف المالي (بالدولار):</label>
+                    <div class="form__control">
+                        <input class="form__input" id="goal" name="goal" type="number" min="1" step="1" required />
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="deadline">تاريخ نهاية الحملة:</label>
+                    <div class="form__control">
+                        <input class="form__input" id="deadline" name="deadline" type="date" required />
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="bank">معلومة الاستلام (IBAN/حساب/محفظة):</label>
+                    <div class="form__control">
+                        <input class="form__input" id="bank" name="payout_info" type="text" required />
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- الوسائط -->
+                <h2>الوسائط</h2>
+
+                <div class="form__group">
+                    <label class="form__label" for="cover">صورة الغلاف:</label>
+                    <div class="form__control">
+                        <input class="form__input" id="cover" name="cover" type="file" accept="image/*" required />
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="gallery">صور إضافية (اختياري):</label>
+                    <div class="form__control">
+                        <input class="form__input" id="gallery" name="gallery" type="file" accept="image/*" multiple />
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="video">رابط فيديو (YouTube/Vimeo) اختياري:</label>
+                    <div class="form__control">
+                        <input class="form__input" id="video" name="video_url" type="url"
+                            placeholder="https://www.youtube.com/watch?v=..." />
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- المكافآت (ثابتة بدون JS: ثلاث درجات) -->
+                <h2>المكافآت (Rewards)</h2>
+
+                <fieldset class="form__fieldset">
+                    <legend class="form__legend">المستوى 1</legend>
+                    <div class="form__group">
+                        <label class="form__label" for="r1_amount">المبلغ ($):</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r1_amount" name="rewards[0][amount]" type="number" min="1"
+                                step="1" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r1_desc">الوصف:</label>
+                        <div class="form__control">
+                            <textarea class="form__input" id="r1_desc" name="rewards[0][description]"
+                                rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r1_limit">حد الكمية (اختياري):</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r1_limit" name="rewards[0][limit]" type="number" min="0"
+                                step="1" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r1_eta">موعد التسليم التقديري:</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r1_eta" name="rewards[0][eta]" type="month" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form__fieldset">
+                    <legend class="form__legend">المستوى 2</legend>
+                    <div class="form__group">
+                        <label class="form__label" for="r2_amount">المبلغ ($):</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r2_amount" name="rewards[1][amount]" type="number" min="1"
+                                step="1" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r2_desc">الوصف:</label>
+                        <div class="form__control">
+                            <textarea class="form__input" id="r2_desc" name="rewards[1][description]"
+                                rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r2_limit">حد الكمية (اختياري):</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r2_limit" name="rewards[1][limit]" type="number" min="0"
+                                step="1" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r2_eta">موعد التسليم التقديري:</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r2_eta" name="rewards[1][eta]" type="month" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form__fieldset">
+                    <legend class="form__legend">المستوى 3</legend>
+                    <div class="form__group">
+                        <label class="form__label" for="r3_amount">المبلغ ($):</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r3_amount" name="rewards[2][amount]" type="number" min="1"
+                                step="1" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r3_desc">الوصف:</label>
+                        <div class="form__control">
+                            <textarea class="form__input" id="r3_desc" name="rewards[2][description]"
+                                rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r3_limit">حد الكمية (اختياري):</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r3_limit" name="rewards[2][limit]" type="number" min="0"
+                                step="1" />
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="r3_eta">موعد التسليم التقديري:</label>
+                        <div class="form__control">
+                            <input class="form__input" id="r3_eta" name="rewards[2][eta]" type="month" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <hr class="divider">
+
+                <!-- الفريق والمخاطر والأسئلة -->
+                <h2>الفريق والمخاطر</h2>
+
+                <div class="form__group">
+                    <label class="form__label" for="team">أعضاء الفريق (أسماء/أدوار):</label>
+                    <div class="form__control">
+                        <textarea class="form__input" id="team" name="team" rows="3"
+                            placeholder="الاسم - الدور"></textarea>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="risks">المخاطر والتحديات:</label>
+                    <div class="form__control">
+                        <textarea class="form__input" id="risks" name="risks" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="faq">الأسئلة الشائعة (سؤال/جواب لكل سطر):</label>
+                    <div class="form__control">
+                        <textarea class="form__input" id="faq" name="faq" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- الموافقات -->
+                <h2>الموافقة</h2>
+                <div class="form__group">
+                    <label class="form__check">
+                        <input class="form__check-input" type="checkbox" name="agree_terms" value="1" required />
+                        <span class="form__check-label">أوافق على الشروط والأحكام وسياسة المنصة</span>
+                    </label>
+                </div>
+
+                <input type="hidden" name="_csrf" value="CSRF_TOKEN_HERE">
+
+                <div class="form__row">
+                    <button type="submit" class="btn btn--primary">نشر المشروع</button>
+                    <button type="reset" class="btn btn--ghost">مسح الحقول</button>
+                </div>
+            </form>
+        </main>
+        <%- include('../includes/footer.ejs') %>

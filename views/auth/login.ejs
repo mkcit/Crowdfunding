@@ -1,0 +1,47 @@
+<!-- login.ejs -->
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <main class="auth container" aria-labelledby="login-title">
+            <h1 id="login-title">تسجيل الدخول</h1>
+
+            <form class="form" method="POST" action="/login" novalidate>
+                <input type="hidden" name="_csrf" value="CSRF_TOKEN_HERE">
+
+                <div class="form__group">
+                    <label class="form__label" for="identifier">البريد الإلكتروني أو اسم المستخدم</label>
+                    <div class="form__control">
+                        <input class="form__input" id="identifier" name="identifier" type="text" required
+                            autocomplete="username" placeholder="example@mail.com">
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="password">كلمة المرور</label>
+                    <div class="form__control">
+                        <input class="form__input" id="password" name="password" type="password" required minlength="6"
+                            autocomplete="current-password" placeholder="••••••">
+                        <button class="btn btn--reveal" type="button" aria-label="إظهار كلمة المرور"
+                            onclick="toggle('password', this)">إظهار</button>
+                    </div>
+                    <div class="form__help">الحد الأدنى 6 أحرف</div>
+                </div>
+
+                <div class="form__row">
+                    <label class="form__check">
+                        <input class="form__check-input" id="remember" type="checkbox" name="remember" value="1">
+                        <span class="form__check-label">تذكرني</span>
+                    </label>
+                    <a href="/forgot">هل نسيت كلمة المرور؟</a>
+                </div>
+
+                <button class="btn btn--primary" type="submit">تسجيل الدخول</button>
+            </form>
+
+            <hr class="divider">
+
+            <div class="links">
+                مستخدم جديد؟ <a href="/register">أنشئ حسابًا الآن</a>
+            </div>
+        </main>
+        <%- include('../includes/footer.ejs') %>

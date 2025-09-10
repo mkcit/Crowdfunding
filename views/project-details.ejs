@@ -1,0 +1,65 @@
+<!-- project-details.ejs -->
+<%- include('includes/head.ejs') %>
+    <%- include('includes/navigation.ejs') %>
+
+        <main class="container">
+
+            <!-- الملخص -->
+            <section aria-label="الملخص" class="section-summary card">
+                <div>
+                    <h2>نبذة سريعة</h2>
+                    <p>يهدف المشروع إلى إنشاء مكتبة رقمية صغيرة داخل مركز مجتمعي ...</p>
+                </div>
+
+                <div class="media">
+                    <figure>
+                        <img src="/images/projects/1001-cover.jpg" alt="صورة المشروع">
+                        <figcaption>صورة توضيحية لمكتبة صغيرة داخل المركز.</figcaption>
+                    </figure>
+                    <div>
+                        <p style="margin:0 0 6px;color:var(--muted)">فيديو تعريفي:</p>
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="تعريف بالمشروع"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- التمويل -->
+            <section aria-label="التمويل" class="section-fund card">
+                <div class="fund-kpis">
+                    <h2>التمويل والتقدّم</h2>
+                    <p><span>الهدف</span><strong>$12,000</strong></p>
+                    <p><span>المُجمّع حتى الآن</span><strong>$7,800</strong></p>
+                    <p><span>عدد الداعمين</span><strong>143</strong></p>
+                    <p><span>الأيام المتبقية</span><strong>18 يومًا</strong></p>
+
+                    <div class="progress-wrap">
+                        <p style="margin:0 0 6px">نسبة الإنجاز: <strong>65%</strong></p>
+                        <progress value="65" max="100">65%</progress>
+                    </div>
+
+                    <div class="actions">
+                        <a class="btn btn--primary" href="/support/1001">ادعم المشروع</a>
+                        <a class="btn btn--ghost" href="/share/1001">مشاركة</a>
+                        <a class="btn" href="/report/1001">إبلاغ</a>
+                    </div>
+
+                    <form class="form form--pledge" method="POST" action="/pledge/1001">
+                        <div class="form__group">
+                            <label class="form__label" for="amount">أدخل قيمة الدعم ($):</label>
+                            <div class="form__control" style="gap: 8px;">
+                                <input style="width: 70%;" class="form__input" id="amount" name="amount" type="number" min="1" step="1"
+                                    required>
+
+                                <button style="width: 30%;" type="submit" class="btn btn--primary">ادعم الآن</button>
+                            </div>
+                        </div>
+                        <!-- <button type="submit" class="btn btn--primary">ادعم الآن</button> -->
+                    </form>
+                </div>
+            </section>
+
+            <!-- باقي الأقسام كما هي -->
+        </main>
+
+        <%- include('includes/footer.ejs') %>

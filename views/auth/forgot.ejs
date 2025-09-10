@@ -1,0 +1,30 @@
+<!-- forgot.ejs -->
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <main class="auth container" aria-labelledby="forgot-title">
+            <h1 id="forgot-title">نسيت كلمة المرور</h1>
+            <p>أدخل بريدك الإلكتروني لإرسال رابط إعادة تعيين كلمة المرور.</p>
+
+            <form class="form" method="POST" action="/forgot">
+                <input type="hidden" name="_csrf" value="CSRF_TOKEN_HERE">
+
+                <div class="form__group">
+                    <label class="form__label" for="email">البريد الإلكتروني</label>
+                    <div class="form__control">
+                        <input class="form__input" id="email" name="email" type="email" required autocomplete="email"
+                            placeholder="example@mail.com">
+                    </div>
+                </div>
+
+                <button class="btn btn--primary" type="submit">إرسال رابط إعادة التعيين</button>
+            </form>
+
+            <hr class="divider">
+
+            <div class="links">
+                <p>تذكّرت كلمة المرور؟ <a href="/login">سجّل الدخول</a></p>
+            </div>
+        </main>
+
+        <%- include('../includes/footer.ejs') %>

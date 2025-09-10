@@ -1,0 +1,67 @@
+<!-- home.ejs -->
+<%- include('includes/head.ejs') %>
+  <%- include('includes/navigation.ejs') %>
+    <div class="container">
+
+      <section aria-label="بحث وفرز" class="toolbar card">
+        <form class="form" method="GET" action="/home">
+          <div class="form__group">
+            <label class="form__label" for="q">بحث</label>
+            <div class="form__control">
+              <input class="form__input" value="<%= searchTitle %>" id="q" name="q" type="search" placeholder="ابحث عن مشروع مميز" >
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="sort">ترتيب حسب</label>
+            <div class="form__control">
+              <select class="form__input" id="sort" name="sort">
+                <option value="recent">الأحدث</option>
+                <option value="oldest">الأقدم</option>
+                <option value="amount">الأكثر تمويلاً</option>
+                <option value="progress">نسبة الإنجاز</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary" aria-label="تطبيق البحث والفرز">تطبيق</button>
+        </form>
+      </section>
+      <!-- قائمة المشاريع -->
+      <main>
+        <div class="grid" role="list">
+          <% projectsList.forEach(project=> { %>
+            <article role="listitem" class="project-card card">
+              <h2><a href="/project-details">
+                  <%= project.title %>
+                </a></h2>
+              <p class="meta">التصنيف: <%= project.category_name %></p>
+              <p class="meta">المدينة: غزة</p>
+              <p class="money">المجمع: <%= project.current_amount %>$</p>
+              <p class="money">الهدف: <%= project.goal_amount %>$</p>
+              
+              <% var rate = (project.current_amount/project.goal_amount)*100 %>  
+              <p>نسبة الانجاز: <%= rate %>%</p>
+              <progress value="<%= rate %>" max="100"><%= rate %>%</progress>
+              <p>
+                <%= project.description %>
+              </p>
+              <div class="actions">
+                <a class="btn btn--primary" href="/support/1001">ادعم المشروع</a>
+                <a class="btn btn--link" href="/share/1001">مشاركة</a>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </main>
+
+      <!-- روابط تنقل أسفل الصفحة -->
+      <footer>
+        <div class="pager" aria-label="ترقيم الصفحات">
+          <a class="btn btn--link" href="/featured?page=1" aria-label="الصفحة السابقة">السابقة</a>
+          <a class="btn btn--link" href="/featured?page=2" aria-label="الصفحة التالية">التالية</a>
+        </div>
+
+      </footer>
+    </div>
+    <%- include('includes/footer.ejs') %>

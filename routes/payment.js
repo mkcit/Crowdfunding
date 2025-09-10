@@ -1,10 +1,11 @@
 const express = require('express');
 const paymentRoutes = express.Router();
-//#region Payments Page
-// projects page
-paymentRoutes.get('/payment', (req, res, next) => {
-    console.log('It is payment page');
-});
+
+const paymentController = require('../controllers/paymentController');
+
+paymentRoutes.get('/get-payment', paymentController.getPayment);
+
+paymentRoutes.get('/post-payment', paymentController.postPayment);
 
 //(Success / Failure Page)
 // app.get('/payment', (req, res, next) => {

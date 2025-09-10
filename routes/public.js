@@ -1,41 +1,34 @@
-const path = require('path');
+
 const express = require('express');
-const rootDir = require('../util/path');
 
 const publicRoutes = express.Router();
-//#region Public Pages
-// projects page
-publicRoutes.get('/projects', (req, res, next) => {
-    res.status(200).sendFile(path.join(rootDir,'views','public', 'projects.html'));
-});
 
-// project-details page
-publicRoutes.get('/project-details', (req, res, next) => {
-    res.status(200).sendFile(path.join(rootDir,'views','public', 'project-details.html'));
-});
+const projectsController = require('../controllers/projectController');
+const authController = require('../controllers/authController');
 
-// register page
-publicRoutes.get('/register', (req, res, next) => {
-    res.status(200).sendFile(path.join(rootDir,'views','public', 'register.html'));
-});
+publicRoutes.get('/projects', projectsController.getProjects);
 
-// login page
-publicRoutes.get('/login', (req, res, next) => {
-    res.status(200).sendFile(path.join(rootDir,'views','public', 'login.html'));
-});
+publicRoutes.get('/project-details', projectsController.getProjectDetails);
 
-// home page
-publicRoutes.get('/home', (req, res, next) => {
-    res.status(200).sendFile(path.join(rootDir,'views', 'public','Home.html'));
-});
+publicRoutes.get('/home', projectsController.getProjects);
 
-// Default home page
-publicRoutes.get('/', (req, res, next) => {
-    res.status(200).sendFile(path.join(rootDir,'views', 'public','Home.html'));
-});
+publicRoutes.get('/', projectsController.getProjects);
 
-//#endregion
+publicRoutes.get('/register', authController.getRegister);
 
+publicRoutes.post('/register', authController.postRegister);
+
+publicRoutes.get('/login', authController.getLogin);
+
+publicRoutes.post('/login', authController.postLogin);
+
+publicRoutes.get('/forgot', authController.getForgot);
+
+publicRoutes.post('/forgot', authController.postForgot);
+
+publicRoutes.get('/reset', authController.getReset);
+
+publicRoutes.post('/reset', authController.postReset);
 
 // This module returns object which contains a group of fnctions,
 module.exports = publicRoutes;

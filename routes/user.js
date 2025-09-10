@@ -1,20 +1,26 @@
 
-const express = require('express'); 
+
+
+const express = require('express');
 const userRoutes = express.Router();
+
+const projectsController = require('../controllers/projectController');
 
 //#region User Pages
 // dashboard page
-userRoutes.get('/user-dashboard', (req, res, next) => {
-    console.log('It is dashboard page');
+userRoutes.get('/dashboard', (req, res, next) => {
+    res.status(200).render('user/dashboard', {
+        pageTitle: 'لوحة التحكم'
+    });
 });
-// create project page
-userRoutes.get('/create-project', (req, res, next) => {
-    console.log('It is creating-project page');
-});
-// dashboard page
-userRoutes.get('/edit-project', (req, res, next) => {
-    console.log('It is editing project page');
-});
-//#endregion
+
+userRoutes.get('/add-project', projectsController.getAddProject);
+
+userRoutes.post('/add-project', projectsController.postAddProject);
+
+userRoutes.get('/edit-project', projectsController.getEditProject);
+
+userRoutes.post('/edit-project', projectsController.postEditProject);
+
 
 module.exports = userRoutes;

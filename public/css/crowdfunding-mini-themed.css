@@ -1,0 +1,402 @@
+:root {
+    --c-bg: #0f1320;
+    /* page background */
+    --c-surface: #151a2b;
+    /* cards, header */
+    --c-elev: #1b2140;
+    /* elevated elements */
+    --c-text: #f3f5ff;
+    /* main text */
+    --c-muted: #b8bfd6;
+    /* secondary text */
+    --c-border: #2b335b;
+    /* hairline borders */
+    --c-accent: #6ee7f0;
+    /* brand accent */
+    --c-accent-strong: #22d3ee;
+    /* accent hover */
+    --c-danger: #ef476f;
+    --c-success: #21c58b;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .25);
+    --shadow-md: 0 6px 18px rgba(0, 0, 0, .35);
+    --radius: 14px;
+    --radius-lg: 22px;
+    --gap: 16px;
+    --gutter: 20px;
+    --container: 1100px;
+    --fs-300: .9rem;
+    /* small */
+    --fs-400: 1rem;
+    /* base */
+    --fs-500: 1.125rem;
+    /* h5 */
+    --fs-600: 1.35rem;
+    /* h4 */
+    --fs-700: 1.7rem;
+    /* h3 */
+    --fs-800: 2rem;
+    /* h2 */
+    --fs-900: 2.4rem;
+    /* h1 */
+}
+
+/* Crowdfunding – Minimal Styles (v2 mini)
+   Goal: simple, clean, neutral. Keeps the unified class names exactly.
+*/
+
+/* ==== Base Reset (very small) ==== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0
+}
+
+img {
+    max-width: 100%;
+    display: block
+}
+
+button {
+    font: inherit
+}
+
+/* ==== Base ==== */
+html {
+    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", sans-serif
+}
+
+body {
+    color: var(--c-text);
+    background: var(--c-bg)
+}
+
+.container {
+    max-width: 960px;
+    margin-inline: auto;
+    padding: 16px
+}
+
+.auth.container {
+    max-width: 420px
+}
+
+h1 {
+    font-size: 1.75rem;
+    margin: 0 0 .75rem
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin: 1.25rem 0 .5rem
+}
+
+h3 {
+    font-size: 1.125rem;
+    margin: 1rem 0 .5rem
+}
+
+p {
+    margin: 0 0 .75rem
+}
+
+a {
+    color: var(--c-accent);
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid var(--c-border);
+    margin: 16px 0
+}
+
+/* ==== Header & Navigation ==== */
+.site-header {
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-border)
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px
+}
+
+.site-nav {
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+.site-nav__link {
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: inherit
+}
+
+.site-nav__link:hover {
+    background: var(--c-surface)
+}
+
+.site-nav__toggle {
+    display: none;
+    font-size: 1.35rem;
+    border: 0;
+    background: none
+}
+
+@media (max-width:768px) {
+    .site-nav__toggle {
+        display: block
+    }
+
+    .site-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 56px;
+        display: none;
+        flex-direction: column;
+        background: var(--c-surface);
+        border-top: 1px solid var(--c-border);
+        padding: 8px
+    }
+
+    .site-nav.is-open {
+        display: flex
+    }
+
+    .site-nav__link {
+        padding: 10px 12px
+    }
+}
+
+/* ==== Footer ==== */
+.site-footer {
+    margin-top: auto;
+    padding: 14px 16px;
+    text-align: center;
+    background: var(--c-surface);
+    color: var(--c-muted);
+    font-size: .95rem
+}
+
+/* ==== Buttons ==== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5ch;
+    min-height: 38px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: var(--c-elev);
+    color: var(--c-text)
+}
+
+.btn:hover {
+    background: var(--c-border)
+}
+
+.btn:disabled {
+    opacity: .6;
+    pointer-events: none
+}
+
+.btn--primary {
+    background: var(--c-accent);
+    color: var(--c-surface)
+}
+
+.btn--primary:hover {
+    background: var(--c-accent-strong)
+}
+
+.btn--ghost {
+    background: transparent;
+    border-color: var(--c-accent);
+    color: var(--c-accent)
+}
+
+.btn--ghost:hover {
+    background: var(--c-elev)
+}
+
+.btn--link {
+    background: transparent;
+    border-color: transparent;
+    color: var(--c-accent);
+    padding: 0
+}
+
+.btn--reveal {
+    background: var(--c-elev);
+    color: #6ee7f0;
+    font-size: .9rem;
+    padding: 6px 10px
+}
+
+/* ==== Cards & Grid ==== */
+.card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    padding: 12px
+}
+
+.grid {
+    display: grid;
+    gap: 12px
+}
+
+@media (min-width:600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))
+    }
+}
+
+.project-card h2 {
+    margin-bottom: .35rem
+}
+
+.project-card .meta,
+.project-card .money {
+    color: var(--c-muted);
+    font-size: .95rem
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: .5rem
+}
+
+/* ==== Forms ==== */
+.form {
+    display: grid;
+    gap: 12px;
+    margin: 12px 0
+}
+
+.form__row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+.form__group {
+    display: grid;
+    gap: 6px
+}
+
+.form__label {
+    font-weight: 600;
+    font-size: .95rem
+}
+
+.form__control {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.form__input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    background: var(--c-surface);
+    color: var(--c-text);
+}
+
+.form__input:focus {
+    outline: 2px solid var(--c-accent)22;
+    border-color: var(--c-accent)
+}
+
+.form__help {
+    font-size: .9rem;
+    color: var(--c-muted)
+}
+
+.form__check {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem
+}
+
+.form__check-input {
+    accent-color: var(--c-accent)
+}
+
+.form__check-label {
+    font-size: .95rem
+}
+
+.form__fieldset {
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    padding: 12px
+}
+
+.form__legend {
+    padding: 0 6px;
+    font-weight: 600;
+    color: #444
+}
+
+/* ==== Auth Page Box ==== */
+.auth {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    padding: 18px
+}
+
+.auth .links {
+    text-align: center
+}
+
+/* ==== Progress & Toolbar ==== */
+progress {
+    width: 100%;
+    height: 10px
+}
+
+.toolbar {
+    padding: 12px
+}
+
+.toolbar form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: end
+}
+
+.toolbar .form__group {
+    min-width: 220px
+}
+
+/* ==== Pager ==== */
+.pager {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 12px 0
+}
