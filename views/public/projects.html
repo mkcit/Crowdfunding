@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>استعراض المشاريع - Crowdfunding</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>المشاريع المميزة</h1>
+        <nav>
+            <a href="/">الرئيسية</a> |
+            <a href="/projects">جميع المشاريع</a> |
+            <a href="/login">تسجيل الدخول</a> |
+            <a href="/register">حساب جديد</a>
+        </nav>
+        <hr>
+    </header>
+
+    <!-- شريط بحث/تصنيف بسيط (اختياري) -->
+    <section>
+        <form method="GET" action="/projects">
+            <label for="q">بحث:</label>
+            <input id="q" name="q" type="search" placeholder="ابحث عن مشروع">
+
+            <label for="cat">التصنيف:</label>
+            <select id="cat" name="category">
+                <option value="">الكل</option>
+                <option value="education">تعليم</option>
+                <option value="health">صحة</option>
+                <option value="energy">طاقة</option>
+                <option value="community">خدمة مجتمعية</option>
+            </select>
+
+            <label for="sort">ترتيب حسب:</label>
+            <select id="sort" name="sort">
+                <option value="recent">الأحدث</option>
+                <option value="amount">الأكثر تمويلاً</option>
+                <option value="progress">نسبة الإنجاز</option>
+                <option value="backers">عدد الداعمين</option>
+            </select>
+
+            <button type="submit">تطبيق</button>
+        </form>
+        <hr>
+    </section>
+
+    <!-- 1) عرض كصفوف (List / Rows) -->
+    <section aria-label="عرض صفوف">
+        <h2>عرض كقائمة</h2>
+
+        <!-- مشروع -->
+        <article>
+            <h3><a href="/project/1001">مكتبة الحيّ الرقمية</a></h3>
+            <p>التصنيف: تعليم | المدينة: غزة</p>
+            <p>الهدف: 12,000$ | المُجمّع: 7,800$ | الداعمين: 143</p>
+            <p>نسبة الإنجاز: 65%</p>
+            <progress value="65" max="100">65%</progress>
+            <p>وصف مختصر: تجهيز مكتبة رقمية للأطفال لتعلّم البرمجة والقراءة.</p>
+            <p>
+                <a href="/support/1001">ادعم</a> |
+                <a href="/share/1001">مشاركة</a>
+            </p>
+            <hr>
+        </article>
+
+        <article>
+            <h3><a href="/project/1002">طاقة شمسية لمدرسة الحي</a></h3>
+            <p>التصنيف: طاقة | المدينة: خانيونس</p>
+            <p>الهدف: 18,000$ | المُجمّع: 10,200$ | الداعمين: 97</p>
+            <p>نسبة الإنجاز: 57%</p>
+            <progress value="57" max="100">57%</progress>
+            <p>وصف مختصر: تركيب ألواح شمسية لتأمين كهرباء مستمرة للمدرسة.</p>
+            <p>
+                <a href="/support/1002">ادعم</a> |
+                <a href="/share/1002">مشاركة</a>
+            </p>
+            <hr>
+        </article>
+
+        <article>
+            <h3><a href="/project/1003">مياه نظيفة لكل بيت</a></h3>
+            <p>التصنيف: صحة | المدينة: رفح</p>
+            <p>الهدف: 25,000$ | المُجمّع: 21,400$ | الداعمين: 301</p>
+            <p>نسبة الإنجاز: 86%</p>
+            <progress value="86" max="100">86%</progress>
+            <p>وصف مختصر: وحدات تنقية مياه منخفضة التكلفة للأسر المحتاجة.</p>
+            <p>
+                <a href="/support/1003">ادعم</a> |
+                <a href="/share/1003">مشاركة</a>
+            </p>
+            <hr>
+        </article>
+    </section>
+
+    <!-- 2) عرض كشبكة (Grid عبر جدول) -->
+    <section aria-label="عرض شبكة">
+        <h2>عرض كشبكة</h2>
+
+        <table border="1" cellpadding="6" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>المشروع</th>
+                    <th>التصنيف/المدينة</th>
+                    <th>الهدف</th>
+                    <th>المُجمّع</th>
+                    <th>الإنجاز</th>
+                    <th>روابط</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="/project/1001">مكتبة الحيّ الرقمية</a></td>
+                    <td>تعليم – غزة</td>
+                    <td>12,000$</td>
+                    <td>7,800$</td>
+                    <td>
+                        65%
+                        <br>
+                        <progress value="65" max="100">65%</progress>
+                    </td>
+                    <td>
+                        <a href="/support/1001">ادعم</a> |
+                        <a href="/share/1001">شارك</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="/project/1002">طاقة شمسية لمدرسة الحي</a></td>
+                    <td>طاقة – خانيونس</td>
+                    <td>18,000$</td>
+                    <td>10,200$</td>
+                    <td>
+                        57%
+                        <br>
+                        <progress value="57" max="100">57%</progress>
+                    </td>
+                    <td>
+                        <a href="/support/1002">ادعم</a> |
+                        <a href="/share/1002">شارك</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="/project/1003">مياه نظيفة لكل بيت</a></td>
+                    <td>صحة – رفح</td>
+                    <td>25,000$</td>
+                    <td>21,400$</td>
+                    <td>
+                        86%
+                        <br>
+                        <progress value="86" max="100">86%</progress>
+                    </td>
+                    <td>
+                        <a href="/support/1003">ادعم</a> |
+                        <a href="/share/1003">شارك</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- تقسيم الصفحات -->
+    <footer>
+        <p>
+            <a href="/projects?page=1">1</a> |
+            <a href="/projects?page=2">2</a> |
+            <a href="/projects?page=3">3</a> |
+            <a href="/projects?page=التالي">التالي</a>
+        </p>
+        <p>© 2025 منصة التمويل الجماعي</p>
+    </footer>
+
+</body>
+
+</html>

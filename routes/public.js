@@ -1,39 +1,37 @@
+const path = require('path');
 const express = require('express');
-const publicRoutes = express.Router();
+const rootDir = require('../util/path');
 
+const publicRoutes = express.Router();
 //#region Public Pages
 // projects page
 publicRoutes.get('/projects', (req, res, next) => {
-    console.log('It is projects page');
+    res.status(200).sendFile(path.join(rootDir,'views','public', 'projects.html'));
 });
 
 // project-details page
 publicRoutes.get('/project-details', (req, res, next) => {
-    console.log('It is project-details page');
+    res.status(200).sendFile(path.join(rootDir,'views','public', 'project-details.html'));
 });
 
 // register page
 publicRoutes.get('/register', (req, res, next) => {
-    console.log('It is register page');
+    res.status(200).sendFile(path.join(rootDir,'views','public', 'register.html'));
 });
 
 // login page
 publicRoutes.get('/login', (req, res, next) => {
-    console.log('It is register page');
+    res.status(200).sendFile(path.join(rootDir,'views','public', 'login.html'));
 });
 
 // home page
 publicRoutes.get('/home', (req, res, next) => {
-    console.log('It is home page');
+    res.status(200).sendFile(path.join(rootDir,'views', 'public','Home.html'));
 });
 
 // Default home page
-publicRoutes.use((req, res, next) => {
-    console.log('It is home page');
-    // res.render('Home', (err, html) => {
-    //     if (!err)
-    //         console.log(html);
-    // });
+publicRoutes.get('/', (req, res, next) => {
+    res.status(200).sendFile(path.join(rootDir,'views', 'public','Home.html'));
 });
 
 //#endregion
