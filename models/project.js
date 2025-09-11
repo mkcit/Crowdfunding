@@ -17,7 +17,11 @@ module.exports = class Project {
     }
 
     save() {
-
+        // Save project to database
+        // return db.execute(
+        //     'INSERT INTO projects (user_id, title, description, goal_amount, current_amount, status, category_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())',
+        //     [this.user_id, this.title, this.description, this.goal_amount, this.current_amount, this.status, this.category_id]
+        // );
     }
     static findById(id) {
         // Find project by ID from database
@@ -54,8 +58,6 @@ module.exports = class Project {
                 sql += ' ORDER BY (projects.current_amount / projects.goal_amount) DESC';
             }
         }
-
-        console.log(sql);
 
         return db.execute(sql, params);
     }

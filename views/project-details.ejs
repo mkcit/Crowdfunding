@@ -7,18 +7,18 @@
             <!-- الملخص -->
             <section aria-label="الملخص" class="section-summary card">
                 <div>
-                    <h2>نبذة سريعة</h2>
-                    <p>يهدف المشروع إلى إنشاء مكتبة رقمية صغيرة داخل مركز مجتمعي ...</p>
+                    <h2><%= project.summary %></h2>
+                    <p><%= project.description %></p>
                 </div>
 
                 <div class="media">
                     <figure>
-                        <img src="/images/projects/1001-cover.jpg" alt="صورة المشروع">
-                        <figcaption>صورة توضيحية لمكتبة صغيرة داخل المركز.</figcaption>
+                        <img src="<%= project.cover_image %>" alt="صورة المشروع">
+                        <figcaption>صورة توضيحية ل <%= project.summary %>.</figcaption>
                     </figure>
                     <div>
                         <p style="margin:0 0 6px;color:var(--muted)">فيديو تعريفي:</p>
-                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="تعريف بالمشروع"
+                        <iframe src="<%= project.video_url %>" title="تعريف بالمشروع"
                             allowfullscreen></iframe>
                     </div>
                 </div>
@@ -28,14 +28,15 @@
             <section aria-label="التمويل" class="section-fund card">
                 <div class="fund-kpis">
                     <h2>التمويل والتقدّم</h2>
-                    <p><span>الهدف</span><strong>$12,000</strong></p>
-                    <p><span>المُجمّع حتى الآن</span><strong>$7,800</strong></p>
-                    <p><span>عدد الداعمين</span><strong>143</strong></p>
+                    <p><span>الهدف</span><strong>$<%=  project.goal_amount %></strong></p>
+                    <p><span>المُجمّع حتى الآن</span><strong>$<%= project.current_amount %></strong></p>
+                    <p><span>عدد الداعمين</span><strong>365</strong></p>
                     <p><span>الأيام المتبقية</span><strong>18 يومًا</strong></p>
 
                     <div class="progress-wrap">
-                        <p style="margin:0 0 6px">نسبة الإنجاز: <strong>65%</strong></p>
-                        <progress value="65" max="100">65%</progress>
+                        <% var rate = project.current_amount/project.goal_amount*100 %>
+                        <p style="margin:0 0 6px">نسبة الإنجاز: <strong><%= rate.toFixed(1) %>%</strong></p>
+                        <progress value="65" max="100"><%= rate %>%</progress>
                     </div>
 
                     <div class="actions">

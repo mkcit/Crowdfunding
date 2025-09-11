@@ -32,17 +32,18 @@
         <div class="grid" role="list" style="margin-top: 10px;" aria-label="قائمة المشاريع">
           <% projectsList.forEach(project=> { %>
             <article role="listitem" class="project-card card">
-              <h2><a href="/project-details">
-                  <%= project.title %>
-                </a></h2>
+              <img  src="<%= project.cover_image %>" alt="صورة للمشروع">
+              <h2>
+                <a href="/project-details/<%= project.id %>"><%= project.title %></a>
+              </h2>
               <p class="meta">التصنيف: <%= project.category_name %></p>
-              <p class="meta">المدينة: غزة</p>
+              <p class="meta">المدينة: <%= project.city %></p>
               <p class="money">المجمع: <%= project.current_amount %>$</p>
-              <p class="money">الهدف: <%= project.goal_amount %>$</p>
+              <p class="money">الهدف: <%= project.goal_amount%>$</p>
               
-              <% var rate = (project.current_amount/project.goal_amount)*100 %>  
-              <p>نسبة الانجاز: <%= rate %>%</p>
-              <progress value="<%= rate %>" max="100"><%= rate %>%</progress>
+              <% var rate =  (project.current_amount/project.goal_amount)*100 %>  
+              <p>نسبة الانجاز: <%= rate.toFixed(1) %>%</p>
+              <progress value="<%= rate %>" max="100"><%= rate.toFixed(1) %>%</progress>
               <p>
                 <%= project.description %>
               </p>

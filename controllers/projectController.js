@@ -17,9 +17,36 @@ exports.getProjects = (req, res, next) => {
 
 
 exports.getProjectDetails = (req, res, next) => {
-    res.status(200).render('project-details', {
-        pageTitle: 'تفاصيل المشروع'
+
+    var id = req.params.id;
+    Project.findById(id).then((result) => {
+
+        // Result is Array of two arrays
+        // Like this:
+        // [ 0 , 1 ]
+        // [ [{id:1,name:'Ahmaed'..},{..}],[] ]
+
+        
+        const [projects, schema] = result;
+        if (projects.length > 0) {
+            const project = projects[0];
+            res.status(200).render('project-details', {
+                pageTitle: 'تفاصيل المشروع',
+                project: project
+            });
+        } else {
+            res.status(404).render('404', {
+                pageTitle: 'الصفحة غير موجودة'
+            });
+        }
+
+    }).catch(err => {
+        console.log(err);
     });
+
+    // res.status(200).render('project-details', {
+    //     pageTitle: 'تفاصيل المشروع'
+    // });
 }
 
 exports.getAddProject = (req, res, next) => {

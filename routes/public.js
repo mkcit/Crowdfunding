@@ -6,7 +6,7 @@ const publicRoutes = express.Router();
 const projectsController = require('../controllers/projectController');
 const authController = require('../controllers/authController');
 
-publicRoutes.get('/project-details', projectsController.getProjectDetails);
+publicRoutes.get('/project-details/:id', projectsController.getProjectDetails);
 
 publicRoutes.get('/home', projectsController.getProjects);
 
